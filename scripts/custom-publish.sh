@@ -31,6 +31,9 @@ echo -e "${BLUE}[INFO]${NC} Using temporary directory: ${GREEN}$TMP_DIR${NC}"
 
 # Ensure the temporary directory is removed on exit.
 function cleanup {
+  echo -e "${YELLOW}[CLEANUP]${NC} Switching back to original branch: ${GREEN}${CURRENT_BRANCH}${NC}..."
+  git checkout "$CURRENT_BRANCH" || echo -e "${RED}[ERROR]${NC} Failed to switch back to original branch."
+
   echo -e "${YELLOW}[CLEANUP]${NC} Removing temporary directory..."
   rm -rf "$TMP_DIR"
 }
@@ -77,9 +80,5 @@ git commit -m "Auto commit -- publish custom build"
 # Force-push the branch to origin.
 echo -e "${BLUE}[DEPLOY]${NC} Pushing 'custom-build' branch to origin..."
 git push -f origin custom-build
-
-# Switch back to the original branch.
-echo -e "${BLUE}[BRANCH]${NC} Switching back to original branch: ${GREEN}${CURRENT_BRANCH}${NC}..."
-git checkout "$CURRENT_BRANCH"
 
 echo -e "${GREEN}[SUCCESS]${NC} Custom publish completed successfully!"
