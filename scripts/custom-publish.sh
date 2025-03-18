@@ -69,7 +69,8 @@ cp -R "$TMP_DIR/." .
 
 # Stage and commit the changes.
 echo -e "${BLUE}[DEPLOY]${NC} Staging files..."
-git add .
+# Use 'git add -f' to force-add files that are ignored by `.gitignore` -- particularly the `dist` directory.
+git add -f .
 echo -e "${BLUE}[DEPLOY]${NC} Committing build..."
 git commit -m "Auto commit -- publish custom build"
 
