@@ -34,7 +34,7 @@ custom_echo "${BLUE}[INFO]${NC} Current branch: ${GREEN}${CURRENT_BRANCH}${NC}"
 TMP_DIR=$(mktemp -d -t custom-build-XXXXXXXX)
 custom_echo "${BLUE}[INFO]${NC} Using temporary directory: ${GREEN}$TMP_DIR${NC}"
 
-# Ensure the temporary directory is removed on exit.
+# Ensure the branch is switched back and the temporary directory is removed on exit.
 function cleanup {
   custom_echo "${YELLOW}[CLEANUP]${NC} Switching back to original branch: ${GREEN}${CURRENT_BRANCH}${NC}..."
   git checkout "$CURRENT_BRANCH" || custom_echo "${RED}[ERROR]${NC} Failed to switch back to original branch."
