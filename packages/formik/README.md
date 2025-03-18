@@ -1,3 +1,20 @@
+# Formik Fork
+
+This Fork has a `custom-publish` script.
+
+```bash
+yarn custom-publish
+```
+
+This script builds the package and updates a dedicated `custom-build` branch containing only the distributable files. It then commits and force‑pushes these changes to GitHub, allowing you to continuously install the latest build with:
+
+```bash
+yarn add git+https://github.com/zduvall/formik.git#custom-build
+```
+---
+
+# Formik Original Readme:
+
 <p align="center">
   <img src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" width="211" height="182" alt="Formik.js" />
 </p>
