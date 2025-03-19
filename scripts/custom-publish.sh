@@ -54,8 +54,8 @@ custom_echo "${BLUE}[BUILD]${NC} Running build..."
 yarn build
 
 # Verify the build output exists.
-if [ ! -d "packages/formik" ]; then
-  custom_echo "${RED}[ERROR]${NC} Build output directory 'packages/formik' does not exist. Exiting."
+if [ ! -d "packages/formik/dist" ]; then
+  custom_echo "${RED}[ERROR]${NC} Build output directory 'packages/formik/dist' does not exist. Exiting."
   exit 1
 fi
 
