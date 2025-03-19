@@ -1,4 +1,8 @@
-# Formik Fork
+# Formik Fork README
+
+This is a Fork of the original Formik repository. It is intended to be used as a dependency in other projects with minimal changes to address bugs, since the original repository is not actively maintained (as of March 2025).
+
+The `main` branch contains the original Formik codebase, while the `main-dev` branch is the main development branch for this fork.
 
 This Fork has a `custom-publish` script.
 
@@ -13,7 +17,7 @@ yarn add git+https://github.com/zduvall/formik.git#custom-build
 ```
 ---
 
-# Formik Original Readme:
+# Formik Original README
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/4060187/61057426-4e5a4600-a3c3-11e9-9114-630743e05814.png" width="211" height="182" alt="Formik.js" />
