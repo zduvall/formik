@@ -77,8 +77,9 @@ cp -R "$TMP_DIR/." .
 
 # Stage and commit the changes.
 custom_echo "${BLUE}[DEPLOY]${NC} Staging files..."
-# Use 'git add -f' to force-add files that are ignored by `.gitignore` -- particularly the `dist` directory.
-git add -f .
+# Use 'git add -f' to force-add files that are ignored by `.gitignore`
+# - particularly the `dist` directory w/ out the `node_modules` directory.
+git add -f dist/ ':!dist/node_modules'
 custom_echo "${BLUE}[DEPLOY]${NC} Committing build..."
 git commit -m "Auto commit -- publish custom build"
 
