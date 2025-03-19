@@ -27,8 +27,8 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 # Save the current branch name.
-CURRENT_BRANCH=$(git symbolic-ref --short HEAD)
-custom_echo "${BLUE}[INFO]${NC} Current branch: ${GREEN}${CURRENT_BRANCH}${NC}"
+ORIGINAL_BRANCH=$(git symbolic-ref --short HEAD)
+custom_echo "${BLUE}[INFO]${NC} Current branch: ${GREEN}${ORIGINAL_BRANCH}${NC}"
 
 # Create a temporary directory for the build output.
 TMP_DIR=$(mktemp -d -t custom-build-XXXXXXXX)
@@ -36,8 +36,13 @@ custom_echo "${BLUE}[INFO]${NC} Using temporary directory: ${GREEN}$TMP_DIR${NC}
 
 # Ensure the branch is switched back and the temporary directory is removed on exit.
 function cleanup {
-  custom_echo "${YELLOW}[CLEANUP]${NC} Switching back to original branch: ${GREEN}${CURRENT_BRANCH}${NC}..."
-  git checkout "$CURRENT_BRANCH" || custom_echo "${RED}[ERROR]${NC} Failed to switch back to original branch."
+  CURRENT=$(git symbolic-ref --short HEAD)
+  if [ "$CURRENT" != "$ORIGINAL_BRANCH" ]; then
+    custom_echo "${YELLOW}[CLEANUP]${NC} Switching back to original branch: ${GREEN}${ORIGINAL_BRANCH}${NC}..."
+    git checkout "$ORIGINAL_BRANCH" || custom_echo "${RED}[ERROR]${NC} Failed to switch back to original branch."
+  else
+    custom_echo "${YELLOW}[CLEANUP]${NC} Already on the original branch: ${GREEN}${ORIGINAL_BRANCH}${NC}."
+  fi
 
   custom_echo "${YELLOW}[CLEANUP]${NC} Removing temporary directory..."
   rm -rf "$TMP_DIR"
