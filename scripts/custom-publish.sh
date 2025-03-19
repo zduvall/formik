@@ -51,7 +51,7 @@ trap cleanup EXIT
 
 # Run the build.
 custom_echo "${BLUE}[BUILD]${NC} Running build..."
-yarn build
+yarn custom-build
 
 # Verify the build output exists.
 if [ ! -d "packages/formik/dist" ]; then
