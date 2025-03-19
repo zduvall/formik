@@ -63,6 +63,8 @@ fi
 custom_echo "${BLUE}[BUILD]${NC} Copying built package to temporary directory..."
 # copy everything from the built package to the temporary directory
 cp -R packages/formik/. "$TMP_DIR/"
+# copy the .git-ignore file to the temporary directory
+cp .gitignore "$TMP_DIR/"
 # delete the node_modules/ and test/ directories in the temporary directory
 rm -rf "$TMP_DIR/node_modules" "$TMP_DIR/test"
 
