@@ -61,8 +61,10 @@ fi
 
 # Copy the built package to the temporary directory.
 custom_echo "${BLUE}[BUILD]${NC} Copying built package to temporary directory..."
-# copy everything, except the `node_modules` and `test` directories
-rsync -av --exclude='node_modules/' --exclude='test/' packages/formik/ "$TMP_DIR/"
+# copy everything from the built package to the temporary directory
+cp -R packages/formik/. "$TMP_DIR/"
+# delete the node_modules/ and test/ directories in the temporary directory
+rm -rf "$TMP_DIR/node_modules" "$TMP_DIR/test"
 
 # Check if the custom-build branch exists. If yes, checkout; if not, create it.
 if git rev-parse --verify custom-build >/dev/null 2>&1; then
