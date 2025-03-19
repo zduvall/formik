@@ -73,6 +73,8 @@ if git rev-parse --verify custom-build >/dev/null 2>&1; then
 else
   custom_echo "${BLUE}[BRANCH]${NC} Branch 'custom-build' does not exist. Creating orphan branch..."
   git checkout --orphan custom-build
+  # add an initial empty commit to the branch
+  git commit --allow-empty -m "Initial commit"
 fi
 
 # Remove all files from the branch.
