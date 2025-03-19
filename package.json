@@ -43,7 +43,9 @@
     "precommit": "lint-staged",
     "e2e:ui": "playwright test --ui",
     "start:app": "turbo run build --filter formik... && yarn --cwd packages/formik link && yarn --cwd ./app link formik && yarn --cwd ./app && yarn --cwd ./app run dev",
-    "benchmark": "tsx scripts/benchmark.tsx | tee output.txt"
+    "benchmark": "tsx scripts/benchmark.tsx | tee output.txt",
+    "custom-build": "turbo run build --force",
+    "custom-publish": "bash ./scripts/custom-publish.sh"
   },
   "lint-staged": {
     "**/*.{ts,tsx,md,mdx,js,jsx}": [
