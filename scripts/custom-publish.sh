@@ -61,7 +61,8 @@ fi
 
 # Copy the built package to the temporary directory.
 custom_echo "${BLUE}[BUILD]${NC} Copying built package to temporary directory..."
-cp -R packages/formik/. "$TMP_DIR/"
+# copy everything, except the `node_modules` and `test` directories
+rsync -av --exclude='node_modules/' --exclude='test/' packages/formik/ "$TMP_DIR/"
 
 # Check if the custom-build branch exists. If yes, checkout; if not, create it.
 if git rev-parse --verify custom-build >/dev/null 2>&1; then
@@ -82,9 +83,8 @@ cp -R "$TMP_DIR/." .
 
 # Stage and commit the changes.
 custom_echo "${BLUE}[DEPLOY]${NC} Staging files..."
-# Use 'git add -f' to force-add files that are ignored by `.gitignore`
-# - particularly the `dist` directory w/ out the `node_modules` directory.
-git add -f dist/ ':!dist/node_modules'
+# Use 'git add -f' to force-add files that are ignored by `.gitignore` -- particularly the `dist` directory
+git add -f dist/
 custom_echo "${BLUE}[DEPLOY]${NC} Committing build..."
 git commit -m "Auto commit -- publish custom build"
 
