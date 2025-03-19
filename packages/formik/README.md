@@ -10,11 +10,13 @@ This Fork has a `custom-publish` script.
 yarn custom-publish
 ```
 
-This script builds the package and updates a dedicated `custom-build` branch containing only the distributable files. It then commits and force‑pushes these changes to GitHub, allowing you to continuously install the latest build with:
+This should be called from the `main-dev` branch after making/merging changes to the codebase. The script builds the package and updates a dedicated `custom-build` branch containing only the distributable files. It then commits and force‑pushes these changes to GitHub, allowing you to continuously install the latest build with:
 
 ```bash
 yarn add git+https://github.com/zduvall/formik.git#custom-build
 ```
+
+Note that the `custom-publish` script uses the `custom-build` script which forces a build even if there are no detected changes.
 ---
 
 # Formik Original README
