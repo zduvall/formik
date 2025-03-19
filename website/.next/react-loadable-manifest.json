@@ -1,0 +1,16 @@
+{
+  "../components/MDXComponents.tsx -> ./Highlight2": {
+    "id": 9852,
+    "files": [
+      "static/chunks/367-5fb8908bb16cfbf9.js",
+      "static/chunks/447.491bf256680c997b.js",
+      "static/chunks/852.ded1a5577a68b743.js"
+    ]
+  },
+  "../components/Search.tsx -> @docsearch/react/modal": {
+    "id": 7931,
+    "files": [
+      "static/chunks/931.4e108333bda71da9.js"
+    ]
+  }
+}
