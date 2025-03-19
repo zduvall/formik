@@ -792,6 +792,8 @@ function useFormik(_ref) {
     return willValidate ? validateFormWithHighPriority(state.values) : Promise.resolve();
   });
   var executeBlur = React.useCallback(function (e, path) {
+    if (!e) return;
+
     if (e.persist) {
       e.persist();
     }
