@@ -16,7 +16,8 @@ This should be called from the `main-dev` branch after making/merging changes to
 yarn add git+https://github.com/zduvall/formik.git#custom-build
 ```
 
-Note that the `custom-publish` script uses the `custom-build` script which forces a build even if there are no detected changes.
+Note that the `custom-publish` script uses a custom script, also named `custom-build`, which forces a build even if there are no detected changes.
+
 ---
 
 # Formik Original README
